@@ -1,0 +1,11 @@
+doctype html
+
+html lang='en'
+  head = render 'head'
+  
+  body
+    section#main
+      = render 'flash'
+      = yield
+
+    = javascript_include_tag 'application'
