@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # env
-# gem 'dotenv'
+gem 'dotenv-rails'
 # env/development
 gem 'pry-rails'
 # gem 'debugger', group: [:development, :test]
@@ -15,11 +15,17 @@ gem 'pg'
 gem 'uglifier', '>= 1.3.0'
 gem 'quiet_assets', group: %w[development]
 
+# app/services
+gem 'omniauth-facebook'
+
+# app/admin
+# gem 'activeadmin', github: 'gregbell/active_admin'
+
 # app/assets/stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem 'compass-rails'
 gem 'foundation-rails'
-# icons, fonts
+gem 'foundation-icons-sass-rails'
 
 # app/assets/javascripts
 gem 'coffee-rails', '~> 4.0.0'
@@ -29,8 +35,13 @@ gem 'jquery-rails'
 gem 'slim-rails'
 gem 'jbuilder', '~> 1.2'
 
+# spec
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+end
+
 # ux
-gem 'turbolinks'
+# gem 'turbolinks'
 
 group :doc do
   gem 'sdoc', require: false

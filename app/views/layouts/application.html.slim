@@ -4,8 +4,14 @@ html lang='en'
   head = render 'head'
   
   body
-    section#main
-      = render 'flash'
-      = yield
-
+    #root
+      header#navbar
+        = render 'navbar'
+      section#main
+        = render 'flash'
+        = yield
+      #root_footer
+    
+    footer#footer
+      .tentacle.show-for-large-up
     = javascript_include_tag 'application'

@@ -1,1 +1,6 @@
-h1 hi
+.row
+  .column.text-center#splash
+    h1 Welcome, burner!
+    = link_to '/auth/facebook', class: 'button large', id: 'fb_sign_in' do
+      = icon 'social-facebook', spacer: true
+      <strong>Connect</strong> with Facebook
