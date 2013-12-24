@@ -1,0 +1,23 @@
+.fixed.contain-to-grid
+  nav.top-bar data-topbar=true
+    ul.title-area
+      li.name
+        h1 = link_to 'Dirty Love Affairs', ''
+      - if current_user?
+        li.toggle-topbar.menu-icon
+          = link_to '#' do
+            span Menu
+
+    - if current_user?
+      section.top-bar-section
+        ul.right
+          li.has-dropdown
+            = link_to "Jemezu D'Zuis", '#'
+            ul.dropdown
+              li = link_to '#' do
+                = icon 'torso', spacer: true
+                ' Profile
+              li.divider
+              li = link_to '#' do
+                = icon 'arrow-right', spacer: true
+                ' Logout
