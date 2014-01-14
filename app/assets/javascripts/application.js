@@ -11,7 +11,7 @@ $(function(){
   
   $('.js-readmore').each(function() {
     var height = $(this).attr('data-max-height');
-    if(!height) { height = 30 }
+    if(!height) { height = 60 }
     $(this).readmore({ maxHeight: height });
   });
 });
