@@ -8,5 +8,10 @@
 
 $(function(){
   $(document).foundation();
-  $('.js-readmore').readmore({ maxHeight: 30 });
+  
+  $('.js-readmore').each(function() {
+    var height = $(this).attr('data-max-height');
+    if(!height) { height = 30 }
+    $(this).readmore({ maxHeight: height });
+  });
 });

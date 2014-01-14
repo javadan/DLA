@@ -3,7 +3,8 @@ class UserDecorator < Draper::Decorator
 
   def fb_image_card
     h.content_tag :div, class: 'th' do
-      fb_image(type: :square, width: 150, height: 150)
+      fb_image(type: :square, width: 150, height: 150) + 
+      h.content_tag(:label, object.name, style: 'margin: 15px 5px')
     end
   end
 
