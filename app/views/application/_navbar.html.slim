@@ -15,6 +15,8 @@
         ul.left
           li = nav_item icon(:home), :dashboard
           li.divider
+          li = nav_item 'About', :help
+          li.divider
           li = nav_item 'Enrolment', :enrolments
           li.divider
           li = nav_item 'Burners', :users 
@@ -42,6 +44,3 @@
               li = link_to :logout do
                 = icon(:power, spacer: true)
                 ' Logout
-            li.divider
-            li
-              = nav_item icon(:info, spacer: true), :help
