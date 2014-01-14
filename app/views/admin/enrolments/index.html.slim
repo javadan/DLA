@@ -3,7 +3,7 @@
     - @enrolments.group_by(&:team).each do |team, enrolments|
       h3 = team.name
       ul
-        - enrolments.each do |e|
+        - enrolments.sort_by(&:role).each do |e|
           li
             span.label.alert = e.role
             h5 = e.user.name
