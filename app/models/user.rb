@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name,
             presence: true
-  validates :email, :fb_uid, :fb_username, :fb_token,
+  validates :fb_uid, :fb_token,
             presence: true,
             uniqueness: true
 
