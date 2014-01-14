@@ -1,0 +1,13 @@
+= simple_form_for([:admin, @team]) do |f|
+  = f.error_notification
+  
+  = f.input :name
+  = f.input :role, input_html: { id: 'wysihtml5-textarea', style: 'height: 180px' }
+  = render partial: 'wysihtml5_toolbar'
+
+  hr
+
+  ul.button-group
+    li = f.submit class: 'button'
+    li = link_to icon(:x), [:admin, :teams], class: 'button secondary'
+

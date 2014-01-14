@@ -1,0 +1,15 @@
+.row
+  .columns
+    = link_to [:new, :admin, :team], class: 'button small' do
+      | #{icon(:plus)} New Team
+
+    table width='100%'
+      tbody
+        - @teams.each do |team|
+          tr
+            td
+              h3 = team.name
+            td width=150
+              ul.button-group.round
+                li = link_to 'edit', [:edit, :admin, team], class: 'button secondary tiny', style: 'margin-bottom: 0'
+                li = link_to icon(:x), [:admin, team], class: 'button secondary tiny', style: 'margin-bottom: 0', method: :delete, data: { confirm: 'Really destroy this Team?' }

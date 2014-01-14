@@ -2,22 +2,46 @@
   nav.top-bar data-topbar=true
     ul.title-area
       li.name
-        h1 = link_to 'Dirty Love Affairs', ''
-      - if current_user?
+        h1
+          = link_to :dashboard do
+            strong DLA
+      - if current_user
         li.toggle-topbar.menu-icon
           = link_to '#' do
             span Menu
 
-    - if current_user?
+    - if current_user
       section.top-bar-section
+        ul.left
+          li = nav_item icon(:home), :dashboard
+          li.divider
+          li = nav_item 'Enrolment', :enrolments
+          li.divider
+          li = nav_item 'Burners', :users 
+          - if current_user.admin?
+            li.divider
+            li.has-dropdown class=('active' if request.path.include?('admin'))
+              = link_to '#' do
+                ' Overlords
+              ul.dropdown
+                li = nav_item 'Teams', [:admin, :teams]
+
         ul.right
           li.has-dropdown
-            = link_to "Jemezu D'Zuis", '#'
+            = link_to '#' do
+              = current_user.fb_image(type: :small, width: 30, height: 30)
+              ' &nbsp;
+              = current_user.name
             ul.dropdown
-              li = link_to '#' do
-                = icon 'torso', spacer: true
+              - if current_user.admin?
+                li
+                  label overlord
+              li = link_to [:edit, :profile] do
+                = icon(:wrench, spacer: true)
                 ' Profile
-              li.divider
-              li = link_to '#' do
-                = icon 'arrow-right', spacer: true
+              li = link_to :logout do
+                = icon(:power, spacer: true)
                 ' Logout
+            li.divider
+            li
+              = nav_item icon(:info, spacer: true), :help

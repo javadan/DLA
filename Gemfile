@@ -17,9 +17,16 @@ gem 'quiet_assets', group: %w[development]
 
 # app/services
 gem 'omniauth-facebook'
+gem 'sorcery'
 
 # app/admin
 # gem 'activeadmin', github: 'gregbell/active_admin'
+
+# app/controllers
+gem 'inherited_resources'
+
+# app/decorators
+gem 'draper'
 
 # app/assets/stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -31,13 +38,21 @@ gem 'foundation-icons-sass-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
+# app/models
+gem 'migrant'
+gem 'cancan'
+
 # app/views
 gem 'slim-rails'
 gem 'jbuilder', '~> 1.2'
+gem 'simple_form'
+gem 'wysihtml5-rails'
 
 # spec
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 # ux

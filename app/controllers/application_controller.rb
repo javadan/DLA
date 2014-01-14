@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  def index
+
+  def current_user
+    super.try(:decorate)
   end
 
-  helper_method :current_user?
-  def current_user?
-    false
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to main_app.root_url, :alert => exception.message
   end
 end

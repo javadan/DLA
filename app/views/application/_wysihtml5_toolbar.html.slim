@@ -1,0 +1,25 @@
+#wysihtml5-toolbar style='display: none;'
+  .button-bar
+    ul.button-group
+      li
+        a.button.small.secondary data-wysihtml5-command="bold" = icon(:bold)
+      li
+        a.button.small.secondary data-wysihtml5-command="italic" = icon(:italic)
+      li
+        a.button.small.secondary data-wysihtml5-command="underline" = icon(:underline)
+
+    ul.button-group
+      li
+        a.button.small.secondary data-wysihtml5-command="insertUnorderedList" = icon('list-bullet')
+      - if false
+        li
+          a.button.small.secondary data-wysihtml5-command="createLink" = icon(:link)
+          .panel data-wysihtml5-dialog="createLink" style="display: none;"
+            input data-wysihtml5-dialog-field="href" value="http://" class="text"
+            br
+            br
+            ul.button-group
+              li
+                a.button.small data-wysihtml5-dialog-action="save" OK
+              li
+                a.button.small.secondary data-wysihtml5-dialog-action="cancel" Cancel

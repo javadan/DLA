@@ -1,2 +1,4 @@
 - flash.each do |type,message|
-  .alert-box class={ notice: 'success', error: 'warning' }[type] = message
+  .alert-box class={ notice: 'success', alert: 'warning', error: 'warning' }[type]
+    .row
+      .columns = message

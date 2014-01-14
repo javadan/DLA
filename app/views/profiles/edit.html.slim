@@ -1,0 +1,19 @@
+.row
+  
+  .columns.large-3.medium-3
+    h3 Update your profile
+    = current_user.fb_image_card
+    hr
+
+  .columns.large-9.medium-9
+    = simple_form_for(current_user, url: profile_url ) do |f|
+      = f.error_notification
+      
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :email
+
+
+      ul.button-group
+        li = f.submit 'Update', class: 'button'
+        li = link_to icon(:x), :dashboard, class: 'button secondary'

@@ -1,0 +1,10 @@
+.js-team
+  hr
+  h3 = team.name
+  .js-enrolment
+    -  if enrolment = team.enrolments.where(user_id: current_user.id).first
+      = render enrolment
+    - else
+      = render partial: 'enrolments/new', locals: { team: team }
+
+  .js-readmore = team.role.try(:html_safe)
