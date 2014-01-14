@@ -6,6 +6,7 @@ gem 'dotenv-rails'
 # env/development
 gem 'pry-rails'
 # gem 'debugger', group: [:development, :test]
+gem 'rails_12factor', group: :production
 
 # Use postgresql as the database for Active Record
 gem 'pg'
