@@ -1,4 +1,4 @@
-class Admin::TeamsController < AuthenticatedController
+class Admin::TeamsController < Admin::BaseController
   inherit_resources
   load_and_authorize_resource
   actions :index, :new, :create, :edit, :update, :destroy

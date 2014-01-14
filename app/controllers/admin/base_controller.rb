@@ -1,4 +1,3 @@
-class Admin::BaseController < ApplicationController
-  # TODO require current user
+class Admin::BaseController < AuthenticatedController
   # TODO require admin user
 end

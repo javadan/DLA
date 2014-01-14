@@ -12,6 +12,7 @@ DirtyLoveAffairs::Application.routes.draw do
   resources :users, only: :index
   namespace :admin do
     resources :teams
+    resources :enrolments
   end
   resource :profile, only: %w(edit update)
   resources :enrolments, only: %w(index create show update destroy)
