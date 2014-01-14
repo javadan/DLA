@@ -30,10 +30,6 @@ class User < ActiveRecord::Base
     [first_name, last_name].compact.join ' '
   end
 
-  def admin?
-    true
-  end
-
   def self.authenticate(auth_hash)
     User.where(:fb_uid => auth_hash['uid']).first_or_create({
       :first_name => auth_hash.fetch('info',{})['first_name'],
