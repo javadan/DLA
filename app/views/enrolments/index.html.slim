@@ -1,12 +1,11 @@
 .row
   .columns.large-12
-      h2
-        ' Roles
-        small to match your availability
 
 .row
     .columns.large-4.medium-4
-      h3 Lead
+      h3
+        = icon :'torso-business', spacer: true
+        ' Lead
       h5.subheader Take charge
       .js-readmore data-max-height=0
         p As team lead, you need to be available to arrange all team meetings and attend all general meetings. Your team will report to you, so that you can keep tabs on expenses and the creative process.
@@ -21,14 +20,18 @@
             li Recon and budgeting
         
     .columns.large-4.medium-4
-      h3 Member
+      h3
+        = icon :'torsos-all', spacer: true
+        ' Member
       h5.subheader Be intimately involved
       .js-readmore data-max-height=0
         p As a team member, you need to attend all team meetings and contribute to planning, decision making, execution, and post clean-up stages.
         p Any ideas that will be implemented and financed must be discussed with your team leader who will do all necessary comms for the team.
         
     .columns.large-4.medium-4
-      h3 Volunteer
+      h3
+        = icon :'torsos', spacer: true
+        ' Volunteer
       h5.subheader Be informed &amp; help out sometimes
       .js-readmore data-max-height=0
         p Volunteers will be assisting when a team needs extra hands - volunteers will not need to take on a decision-making role or make big time commitments.
@@ -40,9 +43,8 @@ br
 .row
   .columns.large-12
     hr
-    h2 Team Enrolments
-    h4.subheader Choose your level of participation
-    .alert-box Burners are encouraged to enrol in as many teams as they'd like to be part of. Groups with disproportionate interest will need to be shuffled.
+    h4 Choose your level of participation
+    .alert-box.secondary Burners are encouraged to enrol in as many teams as they'd like to be part of. Groups with disproportionate interest will need to be shuffled.
 
 - @teams.each_slice(2) do |team_slice|
   .row
