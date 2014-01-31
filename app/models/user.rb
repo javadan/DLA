@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     fb_token 'CAAICWubbWsQBAHsj3t'
 
     admin false, default: false
+    shamed false, default: false
 
     profile_updated false, default: false
 
@@ -25,6 +26,8 @@ class User < ActiveRecord::Base
 
   has_many :enrolments, dependent: :destroy
   has_many :teams, through: :enrolments
+  has_many :shames
+  # has_many :shamed_teams, through: :shames
 
   def name
     [first_name, last_name].compact.join ' '

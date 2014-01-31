@@ -7,4 +7,6 @@ class Team < ActiveRecord::Base
   end
   has_many :enrolments, dependent: :destroy
   has_many :users, through: :enrolments
+  has_many :shames
+  # has_many :shamed_users, through: :shames, source: :user 
 end

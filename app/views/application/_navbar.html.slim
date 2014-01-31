@@ -15,11 +15,10 @@
         ul.left
           li = nav_item icon(:home), :dashboard
           li.divider
-          li = nav_item 'About', :help
-          li.divider
-          li = nav_item 'Enrolment', :enrolments
-          li.divider
-          li = nav_item 'Burners', :users 
+          - if false
+            li = nav_item 'Teams', :teams
+            li.divider
+          li = nav_item 'Slackers', :shames
           - if current_user.admin?
             li.divider
             li.has-dropdown class=('active' if request.path.include?('admin'))
@@ -27,7 +26,7 @@
                 ' Overlords
               ul.dropdown
                 li = nav_item 'Teams', [:admin, :teams]
-                li = nav_item 'Enrolments', [:admin, :enrolments]
+                li = nav_item 'Burners', [:admin, :users]
 
         ul.right
           li.has-dropdown
@@ -45,3 +44,5 @@
               li = link_to :logout do
                 = icon(:power, spacer: true)
                 ' Logout
+          li.divider
+          li = nav_item 'About', :help

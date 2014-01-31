@@ -12,10 +12,15 @@ DirtyLoveAffairs::Application.routes.draw do
   resources :users, only: :index
   namespace :admin do
     resources :teams
-    resources :enrolments
+    resources :shames
+    resources :users
+    # resources :enrolments
   end
+  resources :teams
+  resources :shames, only: %w(index)
+  # resources :enrolments, only: %w(index create show update destroy)
+
   resource :profile, only: %w(edit update)
-  resources :enrolments, only: %w(index create show update destroy)
 
   get :help, to: 'help#index'
 end

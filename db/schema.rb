@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113232631) do
+ActiveRecord::Schema.define(version: 20140131141539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20140113232631) do
 
   add_index "enrolments", ["team_id"], name: "index_enrolments_on_team_id", using: :btree
   add_index "enrolments", ["user_id"], name: "index_enrolments_on_user_id", using: :btree
+
+  create_table "shames", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "updated_at"
+    t.datetime "created_at"
+  end
+
+  add_index "shames", ["group_id"], name: "index_shames_on_group_id", using: :btree
+  add_index "shames", ["user_id"], name: "index_shames_on_user_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name"
@@ -46,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140113232631) do
     t.datetime "created_at"
     t.boolean  "admin",           default: false
     t.boolean  "profile_updated", default: false
+    t.boolean  "shamed",          default: false
   end
 
 end

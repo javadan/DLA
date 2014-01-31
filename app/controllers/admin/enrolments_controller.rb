@@ -1,5 +1,5 @@
 class Admin::EnrolmentsController < Admin::BaseController
   def index
-    @enrolments = Enrolment.all
+    @teams = Team.includes(enrolments: :user).all
   end
 end

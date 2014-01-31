@@ -1,0 +1,11 @@
+.row
+  .columns
+    h3 Burners who are missing deadlines:
+    hr
+    ul.large-block-grid-5
+      - @users.each do |user|
+        li = user.fb_image_card
+
+    - if @users.empty?
+      em Woohoo! No slackers.
+      
