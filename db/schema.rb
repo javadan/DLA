@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131141539) do
+ActiveRecord::Schema.define(version: 20140520115044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(version: 20140131141539) do
 
   add_index "enrolments", ["team_id"], name: "index_enrolments_on_team_id", using: :btree
   add_index "enrolments", ["user_id"], name: "index_enrolments_on_user_id", using: :btree
+
+  create_table "feedbacks", force: true do |t|
+    t.integer  "user_id"
+    t.text     "comments"
+    t.datetime "updated_at"
+    t.datetime "created_at"
+    t.text     "ab_appraisal"
+    t.text     "ab_best_moment"
+    t.text     "dla_negatives"
+    t.text     "dla_what_enhanced_your_experience"
+    t.text     "dla_your_contribution"
+  end
+
+  add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
   create_table "shames", force: true do |t|
     t.integer  "user_id"

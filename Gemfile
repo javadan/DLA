@@ -5,6 +5,7 @@ gem 'rails', '4.0.2'
 gem 'dotenv-rails'
 # env/development
 gem 'pry-rails'
+gem 'show_for'
 # gem 'debugger', group: [:development, :test]
 gem 'rails_12factor', group: :production
 

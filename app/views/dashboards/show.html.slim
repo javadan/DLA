@@ -1,9 +1,4 @@
 .row
   .columns
-    h3 Upcoming
-    .alert-box
-      strong Collective meeting 
-      ' in #{time_ago_in_words DateTime.parse('Friday 28 Feb 2014, 7pm')}
-    .alert-box.warning
-      strong San Clan burns 
-      ' in #{time_ago_in_words DateTime.parse('Friday 2 May 2014, 10pm')}
+    h3 How was your DLA burn?
+    = link_to 'Give us your feedback!', [:new, :feedback], class: 'button'

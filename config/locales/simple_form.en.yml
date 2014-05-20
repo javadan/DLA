@@ -10,17 +10,11 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
-    # Labels and hints examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
-
+    labels:
+      feedback:
+        ab_best_moment: 'Describe your best moment or experience at AB 2014: The Trickster'
+        ab_appraisal: "Each year, AB is different. What aspects of the entire event (2014):<br />1. worked well and improved on previous years <br />2. didn't work well"
+        dla_negatives: "Was there anything within our collective that you found detracted from the DLA experience?"
+        dla_your_contribution: "DLA is made of member contribution. What could you do (or have you done) to create group cohesion before, at, or after the burn?"
+        dla_what_enhanced_your_experience: "Attending AB with a collective should enhance the burn experience. In what ways did DLA do that for you?"
+        comments: 'Got anything else to add?'

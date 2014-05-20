@@ -1,0 +1,35 @@
+.row
+  .columns
+    h3 DLA needs your feedback!
+    p.alert-box
+      | How was your burn? How can we make it even more awesome?
+    small This data will not be made public without your consent.
+
+    = simple_form_for([@feedback]) do |f|
+      = f.error_notification
+      hr
+      
+      = f.input :ab_best_moment, input_html: { id: 'wysihtml5-textarea', style: 'height: 100px' }
+      hr
+
+      = f.input :ab_appraisal, input_html: { id: 'wysihtml5-textarea2', style: 'height: 100px' }
+      hr
+
+      = f.input :dla_negatives, input_html: { id: 'wysihtml5-textarea3', style: 'height: 100px' }
+      hr
+
+      = f.input :dla_your_contribution, input_html: { id: 'wysihtml5-textarea4', style: 'height: 100px' }
+      hr
+
+      = f.input :dla_what_enhanced_your_experience, input_html: { id: 'wysihtml5-textarea5', style: 'height: 100px' }
+      hr
+
+      = f.input :comments, input_html: { id: 'wysihtml5-textarea6', style: 'height: 100px' }
+      hr
+
+      p.alert-box.success
+        strong Thanks for taking the time! 
+        | We appreciate your opinion :)
+
+      ul.button-group
+        li = f.submit 'Send feedback!', class: 'button'

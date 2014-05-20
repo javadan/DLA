@@ -8,5 +8,6 @@ class Ability
     can :manage, Enrolment, user_id: user.id
     
     can :manage, Team if user.admin?
+    can :manage, Feedback if user.admin?
   end
 end

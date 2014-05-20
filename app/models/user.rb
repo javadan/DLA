@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
+
+  has_many :feedbacks
   
   structure do
     first_name 'Dan'

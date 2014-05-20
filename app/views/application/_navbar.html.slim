@@ -18,7 +18,7 @@
           - if false
             li = nav_item 'Teams', :teams
             li.divider
-          li = nav_item 'Slackers', :shames
+          li = nav_item 'Feedback', [:new, :feedback]
           - if current_user.admin?
             li.divider
             li.has-dropdown class=('active' if request.path.include?('admin'))
@@ -27,6 +27,7 @@
               ul.dropdown
                 li = nav_item 'Teams', [:admin, :teams]
                 li = nav_item 'Burners', [:admin, :users]
+                li = nav_item 'Feedback', [:admin, :feedbacks]
 
         ul.right
           li.has-dropdown
