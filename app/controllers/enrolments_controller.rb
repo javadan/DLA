@@ -1,6 +1,5 @@
 class EnrolmentsController < AuthenticatedController  
   inherit_resources
-  before_action { sleep 2 }
   load_and_authorize_resource
   actions :index, :create, :update, :show, :destroy
   

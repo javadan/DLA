@@ -15,15 +15,16 @@ DirtyLoveAffairs::Application.routes.draw do
     resources :shames
     resources :users
     resources :feedbacks
-    # resources :enrolments
+    resources :enrolments
   end
+
   resources :teams
   resources :shames, only: %w(index)
-  # resources :enrolments, only: %w(index create show update destroy)
+  resources :enrolments, only: %w(index create show update destroy)
 
   resource :profile, only: %w(edit update)
 
-  resources :feedbacks, only: %w(new create)
+  # resources :feedbacks, only: %w(new create)
 
   get :help, to: 'help#index'
 end

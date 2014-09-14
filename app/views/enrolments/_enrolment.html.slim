@@ -1,5 +1,6 @@
 ul.button-group.round
-  - Enrolment::ROLES.each do |role|
+  - roles = (enrolment.team.name == 'Overlords') ? ['member'] : Enrolment::ROLES
+  - roles.each do |role|
     - role_selected = (role == enrolment.role)
     li
       = link_to enrolment_path(enrolment, enrolment: { role: role }), method: :put, data: { remote: true }, class: "button small secondary #{'alert' if role_selected} js-enrolment-toggle" do

@@ -1,7 +1,8 @@
 .row
-  .columnsb
-    - @enrolments.group_by(&:team).each do |team, enrolments|
+  .columns
+    - @teams.each do |team|
       h3 = team.name
+      - enrolments = team.enrolments
       ul
         - enrolments.sort_by(&:role).each do |e|
           li
