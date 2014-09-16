@@ -4,7 +4,7 @@ class EnrolmentsController < AuthenticatedController
   actions :index, :create, :update, :show, :destroy
   
   before_action do
-    @teams = Team.all
+    @teams = Team.all.sort_by{ |t| t.name.upcase }
   end
 
   def begin_of_association_chain

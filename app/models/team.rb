@@ -3,6 +3,7 @@ class Team < ActiveRecord::Base
   structure do
     name 'Overlords', validates: { presence: true, uniqueness: true }
     role :text
+    is_new false, default: false
     timestamps
   end
   has_many :enrolments, dependent: :destroy

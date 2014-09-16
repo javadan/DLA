@@ -1,10 +1,15 @@
 .js-team
   hr
-  h3 = team.name
+  h3
+    = team.name
+    - if team.is_new?
+      i.fi-burst-new style='font-size: 160%; float:left; margin-top: -15px; margin-right: 10px; color: orange'
+
+
   .js-enrolment
     -  if enrolment = team.enrolments.where(user_id: current_user.id).first
       = render enrolment
     - else
       = render partial: 'enrolments/new', locals: { team: team }
 
-  .js-readmore = team.role.try(:html_safe)
+  .js-readmore data-max-height=15 = team.role.try(:html_safe)

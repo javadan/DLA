@@ -4,6 +4,6 @@ class Admin::TeamsController < Admin::BaseController
   actions :index, :new, :create, :edit, :update, :destroy
 
   def permitted_params
-    params.permit(team: [:name, :role])
+    params.permit(team: [:name, :role, :is_new])
   end
 end

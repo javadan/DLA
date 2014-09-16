@@ -8,7 +8,8 @@
         - @teams.each do |team|
           tr
             td
-              h3 = team.name
+              h3
+                = team.name
             td width=150
               ul.button-group.round
                 li = link_to 'edit', [:edit, :admin, team], class: 'button secondary tiny', style: 'margin-bottom: 0'
