@@ -7,7 +7,8 @@
 //= require_tree .
 
 $(function(){
-  $(document).foundation();
+
+ $(document).foundation();
   
   $('.js-readmore').each(function() {
     var height = $(this).attr('data-max-height');

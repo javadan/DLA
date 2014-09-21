@@ -1,22 +1,27 @@
 doctype html
 
 html lang='en'
-  head = render 'head'
+  head
+    = render 'head'
   
   body
     #root
       header#navbar
         = render 'navbar'
+
       section#flash
         = render 'flash'
+
       section#main
         = yield
+
       #root_footer
     
     footer#footer
       .row
         .columns
           'Made with&nbsp;#{icon(:heart)}&nbsp;by DLA Enablers
+
       .tentacle.show-for-large-up
 
     = javascript_include_tag 'application'

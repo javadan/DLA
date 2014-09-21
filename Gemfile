@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rails', '4.0.2'
+gem 'rails', '~> 4.2.0.beta1'
 
 # env
 gem 'dotenv-rails'
@@ -25,19 +25,21 @@ gem 'sorcery'
 # gem 'activeadmin', github: 'gregbell/active_admin'
 
 # app/controllers
-gem 'inherited_resources'
+gem 'inherited_resources', github: 'andriytyurnikov/inherited_resources', branch: 'rails_4_2'
+gem 'responders', '2.0.0'
 
 # app/decorators
 gem 'draper'
 
 # app/assets/stylesheets
-gem 'sass-rails', '~> 4.0.0'
-gem 'compass-rails'
-gem 'foundation-rails'
+gem 'sass', '~> 3.4.5'
+gem 'sass-rails', '~> 5.0.0.beta1'
+gem 'compass-rails', '2.0.0'
+gem 'foundation-rails', '~> 5.4.3.1'
 gem 'foundation-icons-sass-rails'
 
 # app/assets/javascripts
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.1'
 gem 'jquery-rails'
 
 # app/models
@@ -45,9 +47,9 @@ gem 'migrant'
 gem 'cancan'
 
 # app/views
-gem 'slim-rails'
+gem 'slim-rails', '2.1.5'
 gem 'jbuilder', '~> 1.2'
-gem 'simple_form'
+gem 'simple_form', '3.1.0.rc2'
 gem 'wysihtml5-rails'
 
 # spec

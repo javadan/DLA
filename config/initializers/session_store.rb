@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-DirtyLoveAffairs::Application.config.session_store :cookie_store, key: '_DirtyLoveAffairs_session'
+Rails.application.config.session_store :cookie_store, key: '_dirty_love_affairs_session'
