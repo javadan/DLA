@@ -16,9 +16,8 @@
           li = nav_item icon(:home), :dashboard
           li.divider
             li = nav_item 'Enrolments', :enrolments
-            li = nav_item 'Burners', :users
-          - if false
             li = nav_item 'Teams', :teams
+          - if false
             li.divider
             li = nav_item 'Feedback', [:new, :feedback]
           - if current_user.admin?
