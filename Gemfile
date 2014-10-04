@@ -68,7 +68,7 @@ group :doc do
 end
 
 # monitoring
-gem 'honeybadger'
+# gem 'honeybadger'
 
 # gem 'unicorn''
 # gem 'capistrano', group: :development
