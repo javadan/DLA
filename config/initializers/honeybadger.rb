@@ -1,3 +1,3 @@
-# Honeybadger.configure do |config|
-#   config.api_key = 'bcfec2f1'
-# end
+Honeybadger.configure do |config|
+  config.api_key = 'ea1f544c'
+end
