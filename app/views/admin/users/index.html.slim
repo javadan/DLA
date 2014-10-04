@@ -3,4 +3,9 @@
     h2 Burners
     ul.large-block-grid-5
       - @users.each do |user|
-        li = link_to user.fb_image_card, [:edit, :admin, user]
+        li
+          = link_to user.fb_image_card, [:edit, :admin, user]
+          - if user.email_confirmed?
+            span.label email confirmed
+          - else
+            span.label.secondary email not confirmed

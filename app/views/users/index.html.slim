@@ -2,4 +2,5 @@
   .columns
     ul.large-block-grid-5
       - @users.each do |user|
-        li = user.fb_image_card
+        li
+          = user.fb_image_card

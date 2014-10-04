@@ -15,14 +15,21 @@ DirtyLoveAffairs::Application.routes.draw do
     resources :shames
     resources :users
     resources :feedbacks
-    resources :enrolments
+    resources :enrolments do
+      root to: redirect('/admin/enrolments/pending')
+      get :pending, on: :collection
+      put :approve, on: :member
+    end
   end
 
   resources :teams
   resources :shames, only: %w(index)
   resources :enrolments, only: %w(index create show update destroy)
 
-  resource :profile, only: %w(edit update)
+  resource :profile, only: %w(show edit update) do
+    put :resend_email_confirmation
+    get :confirm_email
+  end
 
   # resources :feedbacks, only: %w(new create)
 

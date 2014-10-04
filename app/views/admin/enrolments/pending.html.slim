@@ -1,0 +1,16 @@
+.row
+  .columns
+    h3 Pending enrolments
+
+    - @enrolments.group_by(&:team).each do |team, enrolments|
+      h2
+        = team.name
+      .row
+        ul.large-block-grid-5
+          - enrolments.each do |enrolment|
+            li
+              = link_to 'approve', [:approve, :admin, enrolment], data: { confirm: 'Are you sure?' }, method: :put
+              ' &nbsp;|&nbsp; 
+              = link_to 'reject', [:admin, enrolment], data: { confirm: 'Are you sure?' }, method: :delete
+              = enrolment.user.decorate.fb_image_card(enrolment.role)
+      hr

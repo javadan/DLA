@@ -5,5 +5,9 @@ ul.button-group.round
     li
       = link_to enrolment_path(enrolment, enrolment: { role: role }), method: :put, data: { remote: true }, class: "button small secondary #{'alert' if role_selected} js-enrolment-toggle" do
         = role
+        - unless role == 'lead'
+            | &nbsp;
+            | (#{enrolment.team.enrolments.where(role: role).count})
+
   li
     = link_to icon(:x), enrolment, method: :delete, data: { remote: true }, class: "button small secondary js-enrolment-toggle"

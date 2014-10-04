@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
     admin false, default: false
     shamed false, default: false
+    email_confirmed_at DateTime.now
+    email_confirmation_token SecureRandom.uuid, index: true
 
     profile_updated false, default: false
 
@@ -45,6 +47,14 @@ class User < ActiveRecord::Base
     }).tap do |user|
       return nil unless user.persisted?
     end
+  end
+
+  def email_confirmed?
+    email_confirmed_at.present?
+  end
+
+  def generate_email_confirmation_token
+    self.email_confirmation_token = SecureRandom.uuid
   end
 
 end

@@ -41,7 +41,7 @@
               - if current_user.admin?
                 li
                   label overlord
-              li = link_to [:edit, :profile] do
+              li = link_to [:profile] do
                 = icon(:wrench, spacer: true)
                 ' Profile
               li = link_to :logout do

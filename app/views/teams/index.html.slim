@@ -5,9 +5,9 @@
       h2
         = team.name
       .row
-        - team.enrolments.order(:role).each do |enrolment|
-          .columns.medium-4
-            = enrolment.user.decorate.fb_image
-            h5 = enrolment.role
+        ul.large-block-grid-5
+          - team.enrolments.where(approved: true).order(:role).each do |enrolment|
+            li
+              = enrolment.user.decorate.fb_image_card(enrolment.role)
 
       hr

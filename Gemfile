@@ -6,6 +6,7 @@ gem 'dotenv-rails'
 # env/development
 gem 'pry-rails'
 gem 'show_for'
+gem 'letter_opener', group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'rails_12factor', group: :production
 
@@ -18,8 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'quiet_assets', group: %w[development]
 
 # app/services
-gem 'omniauth-facebook'
-gem 'sorcery'
+gem 'omniauth-facebook', '1.5.1'
+gem 'sorcery', '0.8.6'
 
 # app/admin
 # gem 'activeadmin', github: 'gregbell/active_admin'

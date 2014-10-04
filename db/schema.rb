@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916155016) do
+ActiveRecord::Schema.define(version: 20141004162003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20140916155016) do
   create_table "enrolments", force: true do |t|
     t.integer  "user_id"
     t.integer  "team_id"
-    t.string   "role",       default: "member"
-    t.boolean  "approved",   default: false
+    t.string   "role",       limit: 255, default: "member"
+    t.boolean  "approved",               default: false
     t.datetime "updated_at"
     t.datetime "created_at"
   end
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20140916155016) do
     t.text     "dla_negatives"
     t.text     "dla_what_enhanced_your_experience"
     t.text     "dla_your_contribution"
+    t.text     "body"
+    t.string   "type"
   end
 
   add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
@@ -53,25 +55,29 @@ ActiveRecord::Schema.define(version: 20140916155016) do
   add_index "shames", ["user_id"], name: "index_shames_on_user_id", using: :btree
 
   create_table "teams", force: true do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "updated_at"
     t.datetime "created_at"
     t.text     "role"
-    t.boolean  "is_new",     default: false
+    t.boolean  "is_new",                 default: false
   end
 
   create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "fb_uid"
-    t.string   "fb_username"
-    t.string   "fb_token"
+    t.string   "first_name",               limit: 255
+    t.string   "last_name",                limit: 255
+    t.string   "email",                    limit: 255
+    t.string   "fb_uid",                   limit: 255
+    t.string   "fb_username",              limit: 255
+    t.string   "fb_token",                 limit: 255
     t.datetime "updated_at"
     t.datetime "created_at"
-    t.boolean  "admin",           default: false
-    t.boolean  "profile_updated", default: false
-    t.boolean  "shamed",          default: false
+    t.boolean  "admin",                                default: false
+    t.boolean  "profile_updated",                      default: false
+    t.boolean  "shamed",                               default: false
+    t.string   "email_confirmation_token"
+    t.string   "email_confirmed_at"
   end
+
+  add_index "users", ["email_confirmation_token"], name: "index_users_on_email_confirmation_token", using: :btree
 
 end

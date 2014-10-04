@@ -1,1 +1,13 @@
-= link_to '+ Enrol', enrolments_path(enrolment: { team_id: team.id }), method: :post, data: { remote: true, disable_with: 'Enrolling...' }, class: 'button small round js-enrolment-create'
+.row
+  .columns.medium-6
+    = link_to '+ Enrol', enrolments_path(enrolment: { team_id: team.id }), method: :post, data: { remote: true, disable_with: 'Enrolling...' }, class: 'button small round js-enrolment-create'
+
+
+  .columns.medium-3
+    span.label.radius.secondary
+      = pluralize team.enrolments.where(role: 'member').count, 'member'
+
+  .columns.medium-3
+    span.label.radius.secondary
+      = pluralize team.enrolments.where(role: 'volunteer').count, 'volunteer'
+

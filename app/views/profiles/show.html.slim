@@ -1,0 +1,21 @@
+.row
+  .columns
+    h3 Your Profile
+
+.row
+  
+  .columns.large-3.medium-4
+    = current_user.fb_image_card
+    br
+    = link_to 'Edit profile', [:edit, :profile]
+    hr
+
+  .columns.large-9.medium-8
+    = show_for current_user do |s|
+      - if current_user.email_confirmed?
+        .alert-box.success
+          | Thanks for confirming your email address!
+      - else
+        .alert-box.warning
+          | You have not confirmed your email address yet.
+        = link_to "Send confirmation to <strong>#{current_user.email}</strong>".html_safe, [:resend_email_confirmation, :profile], class: 'button', method: :put

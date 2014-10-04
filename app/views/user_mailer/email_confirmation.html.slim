@@ -1,0 +1,9 @@
+h3
+  | Hey #{@user.name},
+
+p
+  | We'd like to make sure that the email address on record is active. Please confirm your email address by clicking the following link:
+  br
+  = link_to 'Confirm my email address', confirm_email_profile_url(t: @user.email_confirmation_token)
+
+= render 'signoff'
