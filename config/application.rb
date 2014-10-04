@@ -22,5 +22,17 @@ module DirtyLoveAffairs
 
     # For not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.dirtyloveaffairs.com',
+      port:                 587,
+      domain:               'dirtyloveaffairs.com',
+      user_name:            ENV['SMTP_USER_NAME'],
+      password:             ENV['SMTP_PASSWORD'],
+      authentication:       'plain',
+      enable_starttls_auto: true
+    }
+
   end
 end
