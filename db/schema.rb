@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004162003) do
+ActiveRecord::Schema.define(version: 20141011175357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,15 +44,25 @@ ActiveRecord::Schema.define(version: 20141004162003) do
 
   add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
-  create_table "shames", force: true do |t|
+  create_table "goal_users", force: true do |t|
+    t.integer  "goal_id"
     t.integer  "user_id"
-    t.integer  "group_id"
+    t.string   "completed_at"
     t.datetime "updated_at"
     t.datetime "created_at"
   end
 
-  add_index "shames", ["group_id"], name: "index_shames_on_group_id", using: :btree
-  add_index "shames", ["user_id"], name: "index_shames_on_user_id", using: :btree
+  add_index "goal_users", ["goal_id"], name: "index_goal_users_on_goal_id", using: :btree
+  add_index "goal_users", ["user_id"], name: "index_goal_users_on_user_id", using: :btree
+
+  create_table "goals", force: true do |t|
+    t.string   "type"
+    t.datetime "deadline"
+    t.datetime "updated_at"
+    t.datetime "created_at"
+  end
+
+  add_index "goals", ["type"], name: "index_goals_on_type", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name",       limit: 255

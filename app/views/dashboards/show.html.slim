@@ -4,13 +4,21 @@
       strong 2015
       |  is coming!
 
-    h3.subheader
-      | Here's the sitch:
+    h3 Your deadlines:
 
     ul
-      li Please #{link_to 'enroll in teams that you dig', :enrolments}. Better yet, nominate yourself to  take the helm of a group that suits you. <strong>Yes, you!</strong>
-      li Start thinking up your creative fundraising idea. <strong>Each</strong> member is required to submit their own unique approach <strong>2 weeks from now</strong>.
-      li <strong>GET AMPED!</strong> 2015 is going to rock hard.
+      li
+        p
+          = link_to "Enrol in teams", :enrolments
+          | (3 days left)
+
+      li
+        p
+          = 'Submit a creative fundraising idea'
+
+        p Start thinking up your creative fundraising idea. <strong>Each</strong> member is required to submit their own unique approach <strong>2 weeks from now</strong>.
+  
+    p <strong>GET AMPED!</strong> 2015 is going to rock hard.
 
     p.subheader
      | xoxo

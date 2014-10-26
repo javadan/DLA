@@ -1,13 +1,17 @@
 .row
-  .columns
+  .columns.medium-4
+    dl.tabs.vertical data-tab=true style='width:100%; max-width: 100%'
+      - @teams.each.with_index do |team,i|
+        dd class=('active' if i.zero?)
+          = link_to team.name, "#panel#{i}"
 
-    - @teams.each do |team|
-      h2
-        = team.name
-      .row
-        ul.large-block-grid-5
-          - team.enrolments.where(approved: true).order(:role).each do |enrolment|
-            li
-              = enrolment.user.decorate.fb_image_card(enrolment.role)
-
-      hr
+  .columns.medium-8
+    .tabs-content
+      - @teams.each.with_index do |team,i|
+        .content id='panel#{i}' class=('active' if i.zero?)
+          .row
+            h4 = team.name
+            ul.large-block-grid-3
+              - team.enrolments.where(approved: true).order(:role).each do |enrolment|
+                li
+                  = enrolment.user.decorate.fb_image_card(enrolment.role)
