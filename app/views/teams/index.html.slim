@@ -21,14 +21,14 @@
           - enrolments = team.enrolments.where(approved: true, role: 'member')
           - if enrolments.any?          
             h5 members
-            ul.large-block-grid-3
+            ul.large-block-grid-4
               - team.enrolments.where(approved: true, role: 'member').each do |enrolment|
                 li = enrolment.user.decorate.fb_image_card
 
           - enrolments = team.enrolments.where(approved: true, role: 'volunteer')
           - if enrolments.any?
             h5 volunteers
-            ul.large-block-grid-3
+            ul.large-block-grid-5
               - enrolments.each do |enrolment|
                 li = enrolment.user.decorate.fb_image_card
 
