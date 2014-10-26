@@ -10,7 +10,25 @@
       - @teams.each.with_index do |team,i|
         .content id='panel#{i}' class=('active' if i.zero?)
           h4 = team.name
-          ul.large-block-grid-3
-            - team.enrolments.where(approved: true).order(:role).each do |enrolment|
-              li
-                = enrolment.user.decorate.fb_image_card(enrolment.role)
+
+          - enrolments = team.enrolments.where(approved: true, role: 'lead')
+          - if enrolments.any?
+            h5 lead
+            ul.large-block-grid-3
+              - enrolments.each do |enrolment|
+                li = enrolment.user.decorate.fb_image_card(enrolment.role)
+
+          - enrolments = team.enrolments.where(approved: true, role: 'member')
+          - if enrolments.any?          
+            h5 members
+            ul.large-block-grid-3
+              - team.enrolments.where(approved: true, role: 'member').each do |enrolment|
+                li = enrolment.user.decorate.fb_image_card(enrolment.role)
+
+          - enrolments = team.enrolments.where(approved: true, role: 'volunteer')
+          - if enrolments.any?
+            h5 volunteers
+            ul.large-block-grid-3
+              - enrolments.each do |enrolment|
+                li = enrolment.user.decorate.fb_image_card(enrolment.role)
+
