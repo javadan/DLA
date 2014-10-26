@@ -8,7 +8,7 @@ class DashboardsController < AuthenticatedController
         },
       confirm_email: {
         done: -> { current_user.email_confirmed? },
-        deadline: DateTime.parse('26 October 2014 5pm')
+        deadline: DateTime.parse('27 October 2014 5pm')
         },
       fundraising_idea: {
         done: -> { current_user.feedbacks.where(category: 'fundraising').any? },
