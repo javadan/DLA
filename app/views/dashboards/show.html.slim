@@ -2,25 +2,39 @@
   .columns
     h1
       strong 2015
-      |  is coming!
+      |  fo' shizzle
 
-    h3 Your deadlines:
+    - if @tasks.all?{ |_,t| t[:done].call }
+      .alert-box.success
+        | You're up to date with deadlines, <strong>thanks!</strong>
+
+    - else
+      .alert-box.warning
+        | Please attend to the following:
 
     ul
-      li
-        p
-          = link_to "Enrol in teams", :enrolments
-          | (3 days left)
+      - @tasks.each do |key, task|
+        - task_done = task[:done].call
+        li
+          p
+          - if task_done
+            span.label.success Done
 
-      li
-        p
-          = 'Submit a creative fundraising idea'
+          - elsif task[:deadline].future?
+            span.label.warning Due in #{time_ago_in_words(task[:deadline])} 
+          - else
+            span.label.alert #{time_ago_in_words(task[:deadline])} late
 
-        p Start thinking up your creative fundraising idea. <strong>Each</strong> member is required to submit their own unique approach <strong>2 weeks from now</strong>.
-  
-    p <strong>GET AMPED!</strong> 2015 is going to rock hard.
+          | &nbsp;
 
-    p.subheader
-     | xoxo
-     br
-     | ~ Enablers
+          - case key
+            - when :enrolment
+              = link_to "Enrol in teams", :enrolments
+
+            - when :confirm_email
+              = link_to "Confirm your email address", :profile
+
+            - when :fundraising_idea
+              = link_to 'Submit a fundraising idea', [:new, :feedback]
+
+

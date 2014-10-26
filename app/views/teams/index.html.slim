@@ -8,7 +8,7 @@
   .columns.medium-7
     .tabs-content
       - @teams.each.with_index do |team,i|
-        .content id='panel#{i}' class=('active' if i.zero?)
+        .content id="panel#{i}" class=('active' if i.zero?)
           h4 = team.name
 
           - enrolments = team.enrolments.where(approved: true, role: 'lead')

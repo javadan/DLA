@@ -5,9 +5,13 @@
     h3 Feeback from <strong>#{@feedback.user.name}</strong>
     hr
     = show_for @feedback do |s|
-      = s.attribute :ab_best_moment
-      = s.attribute :ab_appraisal
-      = s.attribute :dla_negatives
-      = s.attribute :dla_your_contribution
-      = s.attribute :dla_what_enhanced_your_experience
-      = s.attribute :comments
+      - case @feedback.category
+        - when 'fundraising'
+          = s.attribute :body
+        - when 'debrief'
+          = s.attribute :ab_best_moment
+          = s.attribute :ab_appraisal
+          = s.attribute :dla_negatives
+          = s.attribute :dla_your_contribution
+          = s.attribute :dla_what_enhanced_your_experience
+          = s.attribute :comments

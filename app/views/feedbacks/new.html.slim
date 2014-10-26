@@ -1,35 +1,54 @@
 .row
   .columns
     h3 DLA needs your feedback!
-    p.alert-box
-      | How was your burn? How can we make it even more awesome?
-    small This data will not be made public without your consent.
+    - case @feedback.category
 
-    = simple_form_for([@feedback]) do |f|
-      = f.error_notification
-      hr
-      
-      = f.input :ab_best_moment, input_html: { id: 'wysihtml5-textarea', style: 'height: 100px' }
-      hr
+    - when 'debrief'
+      p.alert-box
+        | How was your burn? How can we make it even more awesome?
+      small This data will not be made public without your consent.
 
-      = f.input :ab_appraisal, input_html: { id: 'wysihtml5-textarea2', style: 'height: 100px' }
-      hr
+      = simple_form_for(@feedback) do |f|
+        = f.error_notification
+        hr
+        
+        = f.input :ab_best_moment, input_html: { id: 'wysihtml5-textarea', style: 'height: 100px' }
+        hr
 
-      = f.input :dla_negatives, input_html: { id: 'wysihtml5-textarea3', style: 'height: 100px' }
-      hr
+        = f.input :ab_appraisal, input_html: { id: 'wysihtml5-textarea2', style: 'height: 100px' }
+        hr
 
-      = f.input :dla_your_contribution, input_html: { id: 'wysihtml5-textarea4', style: 'height: 100px' }
-      hr
+        = f.input :dla_negatives, input_html: { id: 'wysihtml5-textarea3', style: 'height: 100px' }
+        hr
 
-      = f.input :dla_what_enhanced_your_experience, input_html: { id: 'wysihtml5-textarea5', style: 'height: 100px' }
-      hr
+        = f.input :dla_your_contribution, input_html: { id: 'wysihtml5-textarea4', style: 'height: 100px' }
+        hr
 
-      = f.input :comments, input_html: { id: 'wysihtml5-textarea6', style: 'height: 100px' }
-      hr
+        = f.input :dla_what_enhanced_your_experience, input_html: { id: 'wysihtml5-textarea5', style: 'height: 100px' }
+        hr
 
-      p.alert-box.success
-        strong Thanks for taking the time! 
-        | We appreciate your opinion :)
+        = f.input :comments, input_html: { id: 'wysihtml5-textarea6', style: 'height: 100px' }
+        hr
 
-      ul.button-group
-        li = f.submit 'Send feedback!', class: 'button'
+        p.alert-box.success
+          strong Thanks for taking the time! 
+          | We appreciate your opinion :)
+
+        ul.button-group
+          li = f.submit 'Send feedback!', class: 'button'
+
+    - else
+
+      p.alert-box
+        | <strong>Ca$h money, how do we make it?</strong>
+
+      p
+        | We need creative ideas for raising cash from the community. How can we extend our fundraising beyond our own personal contributions?
+
+      = simple_form_for(@feedback) do |f|
+        = f.error_notification
+        
+        = f.input :body, label: 'My fundraising idea is..', input_html: { rows: 10 }, placeholder: 'Be descriptive.', required: true
+
+        ul.button-group
+          li = f.submit "Submit to the interwebs!!", class: 'button'

@@ -1,5 +1,7 @@
 .row
   .columns
-    h2 Fank you for the feedback!
-    h4 Here's a kitten riding a horse:
-    img src='http://img1.photographersdirect.com/img/7641/wm/pd3180027.jpg'
+    h1 Fangs for the the feedback..
+    h2
+      - feedback_count =  Feedback.where(category: 'fundraising').count
+      | <strong>#{feedback_count}!</strong> #{feedback_count} suggestions!! Wahh.. hahh.. hahh!!
+    img src='http://www.abc.net.au/news/image/4222298-3x2-940x627.jpg'

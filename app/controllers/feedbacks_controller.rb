@@ -6,7 +6,7 @@ class FeedbacksController < AuthenticatedController
   end
 
   def create
-    @feedback = current_user.feedbacks.new(type: 'fundraising')
+    @feedback = current_user.feedbacks.new(category: 'fundraising')
     @feedback.assign_attributes(feedback_params)
     @feedback.save
 

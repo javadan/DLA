@@ -31,7 +31,7 @@ DirtyLoveAffairs::Application.routes.draw do
     get :confirm_email
   end
 
-  # resources :feedbacks, only: %w(new create)
+  resources :feedbacks, only: %w(new create)
 
   get :help, to: 'help#index'
 end
