@@ -1,6 +1,7 @@
 class TeamsController < AuthenticatedController
-  inherit_resources
 
-  actions :index
+  def index
+    @teams = Team.order(:name)
+  end
 
 end

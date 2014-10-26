@@ -1,5 +1,4 @@
 class Team < ActiveRecord::Base
-  default_scope ->{ order(:created_at) }
   structure do
     name 'Overlords', validates: { presence: true, uniqueness: true }
     role :text
