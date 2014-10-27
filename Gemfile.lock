@@ -156,6 +156,12 @@ GEM
       oauth2 (~> 0.9.3)
       omniauth (~> 1.2)
     pg (0.17.1)
+    postmark (1.3.1)
+      json
+      rake
+    postmark-rails (0.8.0)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.3.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -292,6 +298,7 @@ DEPENDENCIES
   migrant
   omniauth-facebook (= 1.5.1)
   pg
+  postmark-rails (~> 0.8.0)
   pry-rails
   quiet_assets
   rails (~> 4.2.0.beta1)
