@@ -11,19 +11,20 @@
         .content id="panel#{i}" class=('active' if i.zero?)
           h4 = team.name
 
-          h5 lead
+          - if team.name != 'Overlords' 
+            h5 lead
 
-          - lead_enrolments = team.enrolments.where(role: 'lead')
-          - approved_lead_enrolments = lead_enrolments.where(approved: true)
-          - if approved_lead_enrolments.any?
-            ul.large-block-grid-3
-              - approved_lead_enrolments.each do |enrolment|
-                li = enrolment.user.decorate.fb_image_card
-          - elsif (team.name != 'Overlords')
-            p
-              strong Nomination in progress. 
-              ' 
-              span You can still apply!
+            - lead_enrolments = team.enrolments.where(role: 'lead')
+            - approved_lead_enrolments = lead_enrolments.where(approved: true)
+            - if approved_lead_enrolments.any?
+              ul.large-block-grid-3
+                - approved_lead_enrolments.each do |enrolment|
+                  li = enrolment.user.decorate.fb_image_card
+            - else
+              p
+                strong Nomination in progress. 
+                ' 
+                span You can still apply!
 
           - enrolments = team.enrolments.where(approved: true, role: 'member')
           - if enrolments.any?          
