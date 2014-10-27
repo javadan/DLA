@@ -11,24 +11,33 @@
         .content id="panel#{i}" class=('active' if i.zero?)
           h4 = team.name
 
-          - enrolments = team.enrolments.where(approved: true, role: 'lead')
-          - if enrolments.any?
-            h5 lead
+          h5 lead
+
+          - lead_enrolments = team.enrolments.where(role: 'lead')
+          - approved_lead_enrolments = lead_enrolments.where(approved: true)
+          - if approved_lead_enrolments.any?
             ul.large-block-grid-3
-              - enrolments.each do |enrolment|
+              - approved_lead_enrolments.each do |enrolment|
                 li = enrolment.user.decorate.fb_image_card
+          - else
+            p
+              strong Nomination in progress. 
+              ' 
+              span You can still apply!
 
           - enrolments = team.enrolments.where(approved: true, role: 'member')
           - if enrolments.any?          
             h5 members
             ul.large-block-grid-4
-              - team.enrolments.where(approved: true, role: 'member').each do |enrolment|
+              - approved_member_enrolments = team.enrolments.where(approved: true, role: 'member')
+              - lead_enrolments = team.enrolments.where(role: 'lead')
+              - (approved_member_enrolments + lead_enrolments).shuffle.each do |enrolment|
                 li = enrolment.user.decorate.fb_image_card
 
           - enrolments = team.enrolments.where(approved: true, role: 'volunteer')
           - if enrolments.any?
             h5 volunteers
             ul.large-block-grid-5
-              - enrolments.each do |enrolment|
+              - enrolments.shuffle.each do |enrolment|
                 li = enrolment.user.decorate.fb_image_card
 

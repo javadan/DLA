@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "Enablers <enablers@dirtyloveaffairs.com>"
+  default from: "DLA Enablers <enablers@dirtyloveaffairs.com>"
 
   def email_confirmation(user)
     @user = user
