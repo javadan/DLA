@@ -19,7 +19,7 @@
             ul.large-block-grid-3
               - approved_lead_enrolments.each do |enrolment|
                 li = enrolment.user.decorate.fb_image_card
-          - else
+          - elsif (team.name != 'Overlords')
             p
               strong Nomination in progress. 
               ' 
