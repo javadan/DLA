@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
     email_confirmation_token SecureRandom.uuid, index: true
 
     profile_updated false, default: false
+    newsletter_subscribed false, default: false
 
     timestamps 
   end
@@ -38,14 +39,17 @@ class User < ActiveRecord::Base
   end
 
   def self.authenticate(auth_hash)
-    User.where(:fb_uid => auth_hash['uid']).first_or_create({
+    User.where(:fb_uid => auth_hash['uid']).first_or_initialize({
       :first_name => auth_hash.fetch('info',{})['first_name'],
       :last_name => auth_hash.fetch('info',{})['last_name'],
       :email => auth_hash.fetch('info',{})['email'],
       :fb_username => auth_hash.fetch('extra',{}).fetch('raw_info',{})['username'],
       :fb_token => auth_hash.fetch('credentials',{})['token']
     }).tap do |user|
-      return nil unless user.persisted?
+      if user.new_record?
+        user.save!
+        NewsletterService.new.subscribe_user(user)
+      end
     end
   end
 
