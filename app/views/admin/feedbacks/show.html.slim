@@ -2,7 +2,7 @@
   .columns
     = link_to 'All feedback', [:admin, :feedbacks]
     hr
-    h3 Feeback from <strong>#{@feedback.user.name}</strong>
+    h3 Feedback from <strong>#{@feedback.user.name}</strong>
     hr
     = show_for @feedback do |s|
       - case @feedback.category
