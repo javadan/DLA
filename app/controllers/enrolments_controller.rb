@@ -12,14 +12,20 @@ class EnrolmentsController < AuthenticatedController
   end
 
   def create
-    create! do # TODO |success, failure|
-      unless @enrolment.role == 'lead'
-        @enrolment.update_attribute(:approved, true)
-      end
+    create! do
+      is_lead_role = (@enrolment.role == 'lead')
+      @enrolment.update_attribute(:approved, !is_lead_role)
+      @enrolment      
+    end
+  end
+
+  def update
+    update! do
+      is_lead_role = (@enrolment.role == 'lead')
+      @enrolment.update_attribute(:approved, !is_lead_role)
       @enrolment
     end
   end
-  
 
   def begin_of_association_chain
     current_user

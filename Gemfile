@@ -26,6 +26,8 @@ gem 'sorcery', '0.8.6'
 # gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'postmark-rails', '~> 0.8.0'
 
+# app/mailers
+gem 'gibbon'
 
 # app/controllers
 gem 'inherited_resources', github: 'andriytyurnikov/inherited_resources', branch: 'rails_4_2'
