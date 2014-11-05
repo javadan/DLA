@@ -3,7 +3,6 @@
     = link_to 'All feedback', [:admin, :feedbacks]
     hr
     h3 Feedback from <strong>#{@feedback.user.name}</strong>
-    h4 hi matt
     hr
     = show_for @feedback do |s|
       - case @feedback.category
