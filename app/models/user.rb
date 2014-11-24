@@ -2,6 +2,11 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
   has_many :feedbacks
+
+  has_many :fundraisers
+  has_many :fundraiser_votes
+
+  has_many :fundraiser_comments
   
   structure do
     first_name 'Dan'

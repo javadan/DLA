@@ -1,8 +1,10 @@
 .row
   .columns
-    h1
-      strong 2015
-      |  fo' shizzle
+    h2
+      | Clan burns in 
+      strong #{@days_until_clan_burns} days
+      | !
+
 
     - if @tasks.all?{ |_,t| t[:done].call }
       .alert-box.success
@@ -36,5 +38,4 @@
 
             - when :fundraising_idea
               = link_to 'Submit a fundraising idea', [:new, :feedback]
-
 

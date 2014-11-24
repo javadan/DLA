@@ -9,3 +9,11 @@ en:
         dla_your_contribution: "DLA your contribution"
         dla_what_enhanced_your_experience: "DLA wins"
         comments: 'Comments'
+
+      fundraiser:
+        viability_description: 'Description'
+        viability_capital: 'Capital involved'
+        viability_profit: 'Potential profit'
+        viability_risk: 'Potential risks'
+        viability_participation_event: 'Member participation at the event'
+        viability_participation_logistics: 'Member participation before / after'

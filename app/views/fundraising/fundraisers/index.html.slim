@@ -1,0 +1,26 @@
+.row
+  .columns
+    .row.mast
+      .columns.medium-8
+        h2 Fundraisers
+
+      .columns.medium-4
+        = link_to [:new, :fundraiser], class: 'button primary large right' do
+          | #{icon 'lightbulb', spacer: true} Propose a fundraiser
+
+    - if @fundraisers.empty?
+      .alert-box.warning
+        | No fundraisers yet :( What's your idea?
+
+    - @fundraisers.each do |fundraiser|
+      hr
+      .row
+        .columns.medium-2
+          = fundraiser.user.fb_image(width: 90, height: 90)
+
+        .columns.medium-10
+          h3
+            = link_to fundraiser.name, fundraiser
+          h6 votes... & whether you should vote
+
+    

@@ -18,3 +18,11 @@ en:
         dla_your_contribution: "DLA is made of member contribution. What could you do (or have you done) to create group cohesion before, at, or after the burn?"
         dla_what_enhanced_your_experience: "Attending AB with a collective should enhance the burn experience. In what ways did DLA do that for you?"
         comments: 'Got anything else to add?'
+
+      fundraiser:
+        viability_description: 'Describe your idea in a few sentences'
+        viability_capital: 'What size starting capital do you need?'
+        viability_profit: 'What size profit do you expect?'
+        viability_risk: 'What are the risks involved?'
+        viability_participation_event: 'How will members participate at the event? How many are needed?'
+        viability_participation_logistics: 'How will members participate before and after? How many are needed?'

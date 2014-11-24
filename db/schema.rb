@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105152439) do
+ActiveRecord::Schema.define(version: 20141124123431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,43 @@ ActiveRecord::Schema.define(version: 20141105152439) do
 
   add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
+  create_table "fundraiser_comments", force: true do |t|
+    t.integer  "fundraiser_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "updated_at"
+    t.datetime "created_at"
+  end
+
+  add_index "fundraiser_comments", ["fundraiser_id"], name: "index_fundraiser_comments_on_fundraiser_id", using: :btree
+  add_index "fundraiser_comments", ["user_id"], name: "index_fundraiser_comments_on_user_id", using: :btree
+
+  create_table "fundraiser_votes", force: true do |t|
+    t.string   "type"
+    t.datetime "updated_at"
+    t.datetime "created_at"
+    t.integer  "fundraiser_id"
+    t.integer  "user_id"
+  end
+
+  add_index "fundraiser_votes", ["fundraiser_id"], name: "index_fundraiser_votes_on_fundraiser_id", using: :btree
+  add_index "fundraiser_votes", ["user_id"], name: "index_fundraiser_votes_on_user_id", using: :btree
+
+  create_table "fundraisers", force: true do |t|
+    t.datetime "updated_at"
+    t.datetime "created_at"
+    t.string   "name"
+    t.integer  "user_id"
+    t.text     "viability_capital"
+    t.text     "viability_description"
+    t.text     "viability_participation_event"
+    t.text     "viability_participation_logistics"
+    t.text     "viability_profit"
+    t.text     "viability_risk"
+  end
+
+  add_index "fundraisers", ["user_id"], name: "index_fundraisers_on_user_id", using: :btree
+
   create_table "goal_users", force: true do |t|
     t.integer  "goal_id"
     t.integer  "user_id"
@@ -63,6 +100,11 @@ ActiveRecord::Schema.define(version: 20141105152439) do
   end
 
   add_index "goals", ["type"], name: "index_goals_on_type", using: :btree
+
+  create_table "meetings", force: true do |t|
+    t.datetime "updated_at"
+    t.datetime "created_at"
+  end
 
   create_table "teams", force: true do |t|
     t.string   "name",       limit: 255

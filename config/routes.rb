@@ -26,12 +26,16 @@ DirtyLoveAffairs::Application.routes.draw do
   resources :shames, only: %w(index)
   resources :enrolments, only: %w(index create show update destroy)
 
+  namespace :fundraising do
+    root to: redirect('/fundraising/fundraisers')
+    resources :fundraisers
+  end
+
   resource :profile, only: %w(show edit update) do
     put :resend_email_confirmation
     get :confirm_email
   end
 
-  resources :feedbacks, only: %w(new create)
 
   get :help, to: 'help#index'
 end

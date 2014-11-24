@@ -1,6 +1,9 @@
 class DashboardsController < AuthenticatedController
   before_action :check_profile_updated
+
   def show
+    @days_until_clan_burns = (Date.parse('1 May 2015') - Date.today).to_i
+
     @tasks = {
       enrolment: {
         done: -> { current_user.enrolments.any? },
@@ -9,12 +12,14 @@ class DashboardsController < AuthenticatedController
       confirm_email: {
         done: -> { current_user.email_confirmed? },
         deadline: DateTime.parse('27 October 2014 5pm')
-        },
-      fundraising_idea: {
-        done: -> { current_user.feedbacks.where(category: 'fundraising').any? },
-        deadline: DateTime.parse('3 November 2014 5pm'),
-      }
+        }
+      # fundraising_idea: {
+      #   done: -> { current_user.feedbacks.where(category: 'fundraising').any? },
+      #   deadline: DateTime.parse('3 November 2014 5pm'),
+      # }
     }
+
+
   end
 
   protected

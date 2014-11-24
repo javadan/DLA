@@ -1,0 +1,36 @@
+.row
+  .columns
+    h2 Propose a fundraiser
+
+    = simple_form_for @fundraiser do |f|
+
+      = f.error_notification
+
+      = f.input :name, placeholder: 'Give your fundraiser a name', label: false
+      
+      = f.input :viability_description
+
+      .alert-box.primary
+        | The rest of this form is not compulsory, but will help with understanding viability. If not now, <strong>please take the time to come back and fill it in later</strong>.
+
+      .row
+        .columns.medium-6
+          h3 Money
+
+          = f.input :viability_capital, placeholder: 'Figures are not necessary, just an idea of magnitude'
+
+          = f.input :viability_profit, placeholder: 'Figures are not necessary, just an idea of magnitude'
+
+          = f.input :viability_risk
+
+        .columns.medium-6
+          h3 Member participation
+
+          = f.input :viability_participation_event
+          = f.input :viability_participation_logistics
+
+      hr
+
+      ul.button-group
+        li
+          = f.submit 'Propose my idea!', class: 'button'
