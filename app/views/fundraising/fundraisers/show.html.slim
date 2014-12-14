@@ -10,20 +10,20 @@
     h5 Proposed by
     h4 = @fundraiser.user.name
 
-    = @fundraiser.user.fb_image(width: 200, height: 200)
+    = fundraiser.user.fb_image(width: 200, height: 200)
 
-    - if @fundraiser.user == current_user
+    - if fundraiser.user == current_user
       br
       br
-      = link_to 'Edit my proposal', [:edit, @fundraiser], class: 'button primary small'
+      = link_to 'Edit my proposal', [:edit, :fundraising, fundraiser], class: 'button primary small'
 
     - if current_user.admin?
-      = link_to 'Destroy', @fundraiser, method: :delete, class: 'button danger'
+      = link_to 'Destroy', [:fundraising, fundraiser], method: :delete, class: 'button danger'
 
   .columns.medium-9
-
-    | thumbs up
-    | thumbs down
+    - if false
+      | thumbs up
+      | thumbs down
 
     = show_for @fundraiser do |s|
       = s.attribute :viability_description

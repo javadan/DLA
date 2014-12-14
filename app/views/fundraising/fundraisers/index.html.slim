@@ -5,14 +5,14 @@
         h2 Fundraisers
 
       .columns.medium-4
-        = link_to [:new, :fundraiser], class: 'button primary large right' do
+        = link_to [:new, :fundraising, :fundraiser], class: 'button primary large right' do
           | #{icon 'lightbulb', spacer: true} Propose a fundraiser
 
-    - if @fundraisers.empty?
+    - if fundraisers.empty?
       .alert-box.warning
         | No fundraisers yet :( What's your idea?
 
-    - @fundraisers.each do |fundraiser|
+    - fundraisers.each do |fundraiser|
       hr
       .row
         .columns.medium-2
@@ -20,7 +20,8 @@
 
         .columns.medium-10
           h3
-            = link_to fundraiser.name, fundraiser
-          h6 votes... & whether you should vote
+            = link_to fundraiser.name, [:fundraising, fundraiser]
+          h6
+            - 'votes... & whether you should vote'
 
     

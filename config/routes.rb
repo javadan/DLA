@@ -21,6 +21,10 @@ DirtyLoveAffairs::Application.routes.draw do
       put :approve, on: :member
     end
   end
+  
+  resources :approvals, only: %w(index show) do
+    resources :approval_votes
+  end
 
   resources :teams
   resources :shames, only: %w(index)

@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
 
   has_many :feedbacks
 
+  has_many :approval_votes
+  has_many :candidate_approval_votes, class_name: 'ApprovalVote', foreign_key: :candidate_id
+
   has_many :fundraisers
   has_many :fundraiser_votes
 
@@ -21,6 +24,8 @@ class User < ActiveRecord::Base
     shamed false, default: false
     email_confirmed_at DateTime.now
     email_confirmation_token SecureRandom.uuid, index: true
+
+    approved false, default: false
 
     profile_updated false, default: false
     newsletter_subscribed false, default: false

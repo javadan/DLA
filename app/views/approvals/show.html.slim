@@ -1,0 +1,113 @@
+.row
+  .columns
+    h3 Candidate sentiment 
+
+hr
+
+.row
+  .columns.medium-4
+    = candidate.fb_image(width: 250, height: 250)
+
+  .columns.medium-8
+
+    h2 <strong>#{candidate.name}</strong>
+
+    - if @current_user_approval_vote
+
+      h4 You voted: <strong>#{@current_user_approval_vote.vote}</strong>
+      = link_to approval_approval_vote_path(@candidate, @current_user_approval_vote), method: :delete, class: 'button secondary', data: { confirm: 'Are you sure?' } do
+          = icon('refresh', spacer: true)
+          | undo my vote
+
+    - else
+
+      h4 Your vote is pending!
+
+
+      = simple_form_for ApprovalVote.new, url: approval_approval_votes_path(@candidate) do |f|
+
+        = f.input :vote, collection: ApprovalVote::VOTES, as: :select, label: false
+
+        ul.button-group
+          li
+            a.button.secondary data-approval_vote-vote='vouch'
+              = icon('heart', spacer: true)
+              strong Vouch
+              br
+              small
+                | I publicly vouch for this person
+                br
+                | as a contributing DLA member
+          li
+            a.button.secondary data-approval_vote-vote='approve'
+              = icon('like', spacer: true)
+              strong Approve
+              br
+              small
+                | I think this person is probably
+                br
+                | a good fit for DLA
+          li
+            a.button.secondary data-approval_vote-vote='veto'
+              = icon('x', spacer: true)
+              strong Veto
+              br
+              small
+                | I don't think this person
+                br
+                | is a good fit for DLA
+
+
+        .js-vote-motivation style='display: none'
+          h5.subheader.js-vote-public
+            | You are <strong>publicly vouching</strong> for #{candidate.name}.
+
+          h5.subheader.js-vote-anonymous
+            | You are <strong>voting anonymously</strong> for #{candidate.name}.
+
+          .row
+            .js-vote-public
+              .columns.medium-2
+                  = current_user.fb_image(width: 200, height: 200)
+
+            .columns.medium-10
+
+              = f.input :comment, label: false, placeholder: 'Motivate your decision..', input_html: { rows: 5 }
+
+              = f.submit 'Cast my vote', class: 'button secondary'
+
+
+.row
+  .columns
+
+    hr
+
+    - approval_votes.each do |approval_vote|
+
+      .approval_vote.alert-box class=approval_vote.vote_class
+
+        - if approval_vote.vote == 'vouch'
+          .row
+            .columns.medium-1
+              div style='font-size: 300%'
+                = approval_vote.vote_icon(spacer: true)
+            .columns.medium-2
+              = approval_vote.user.fb_image(width: 80, height: 80)
+              br
+              strong
+                = approval_vote.user.name
+            .columns.medium-9
+              .js-readmore data-max-height=80
+                = simple_format approval_vote.comment
+
+        - else
+
+          .row
+            .columns.medium-1
+              div style='font-size: 300%'
+                = approval_vote.vote_icon(spacer: true)
+            .columns.medium-11
+              .js-readmore data-max-height=80
+                = simple_format approval_vote.comment
+
+

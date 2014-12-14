@@ -1,0 +1,31 @@
+.row
+  .columns
+    h3 Candidates for DLA membership
+
+    p The following members have applied to join our collective! Have your say on whether you see them as a good fit.
+
+    - if candidates.empty?
+      p
+       em Nobody pending!
+
+    - candidates.each do |candidate|
+      hr
+      .row
+        .columns.medium-2
+          = candidate.fb_image(width: 90, height: 90)
+
+        .columns.medium-10
+          h4
+            = link_to candidate.name, approval_path(candidate)
+          - current_user_vote = current_user.approval_votes.find_by(candidate: candidate)
+
+          - if current_user_vote
+            h5 you voted
+
+          - else
+            h5 you havent voted
+
+
+          - (candidate.candidate_approval_votes * 20).each do |approval_vote|
+            .label class=approval_vote.vote_class style='margin-bottom: 2px; margin-right: 2px'
+              = approval_vote.vote_icon

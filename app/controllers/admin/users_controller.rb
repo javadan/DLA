@@ -10,7 +10,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def permitted_params
-    params.permit(user: [:name, :shamed])
+    params.permit(user: [:name, :approved, :shamed])
   end
 
 end

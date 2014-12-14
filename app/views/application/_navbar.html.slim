@@ -19,6 +19,7 @@
             li = nav_item 'Teams', :teams
             li.divider
             li = nav_item 'Fundraisers', [:fundraising, :fundraisers]
+            li = nav_item 'Candidates', [:approvals]
           - if current_user.admin?
             li.divider
             li.has-dropdown class=('active' if request.path.include?('admin'))

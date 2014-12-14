@@ -8,10 +8,13 @@
 
     .tabs-content
       - Feedback::CATEGORIES.each.with_index do |category, i|
+
         .content id="panel#{i}" class=('active' if i.zero?)
           - feedbacks = Feedback.where(category: category)
+
           - if feedbacks.empty?
             em No feedback for this category.
+
           - else
             table width='100%'
               tbody

@@ -22,6 +22,9 @@
           - if task_done
             span.label.success Done
 
+          - elsif task[:deadline].nil?
+            span.label.warning Due ASAP 
+            
           - elsif task[:deadline].future?
             span.label.warning Due in #{time_ago_in_words(task[:deadline])} 
           - else
@@ -38,4 +41,7 @@
 
             - when :fundraising_idea
               = link_to 'Submit a fundraising idea', [:new, :feedback]
+
+            - when :vote_for_candidates
+              = link_to "Vote for candidates", [:approvals]
 

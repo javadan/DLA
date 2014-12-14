@@ -20,6 +20,7 @@ development:
   database: DirtyLoveAffairs_development
   pool: 5
   username: recombinary
+  password: this is it
   host: localhost
 
 test:
@@ -28,4 +29,5 @@ test:
   database: DirtyLoveAffairs_test
   pool: 5
   username: recombinary
+  password: this is it
   host: localhost

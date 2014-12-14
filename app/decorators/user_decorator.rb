@@ -1,6 +1,8 @@
 class UserDecorator < Draper::Decorator
   delegate_all
 
+  decorates_associations :candidate_approval_votes, with: ApprovalVoteDecorator
+
   def fb_image_card(content = '')
     h.content_tag :div, class: 'th' do
       fb_image(type: :square, width: 150, height: 150) + 

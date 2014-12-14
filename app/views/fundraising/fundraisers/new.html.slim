@@ -2,13 +2,13 @@
   .columns
     h2 Propose a fundraiser
 
-    = simple_form_for @fundraiser do |f|
+    = simple_form_for [:fundraising, @fundraiser] do |f|
 
       = f.error_notification
 
       = f.input :name, placeholder: 'Give your fundraiser a name', label: false
       
-      = f.input :viability_description
+      = f.input :viability_description, input_html: { rows: 7 }
 
       .alert-box.primary
         | The rest of this form is not compulsory, but will help with understanding viability. If not now, <strong>please take the time to come back and fill it in later</strong>.
