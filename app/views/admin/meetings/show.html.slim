@@ -1,0 +1,20 @@
+.row
+  .columns
+    ul.button-group.round.right
+      li = link_to 'edit', [:edit, :admin, meeting], class: 'button secondary', style: 'margin-bottom: 0'
+      li = link_to icon(:x), [:admin, meeting], class: 'button secondary', style: 'margin-bottom: 0', method: :delete, data: { confirm: 'Really destroy this Meeting?' }
+
+
+    h2
+      = l meeting.scheduled_for, format: :long
+
+    h4
+      = meeting.state
+
+
+hr
+
+.row
+  .columns
+    h4 Attendees
+

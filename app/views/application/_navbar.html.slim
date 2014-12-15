@@ -26,6 +26,7 @@
               = link_to '#' do
                 ' Overlords
               ul.dropdown
+                li = nav_item 'Meetings', [:admin, :meetings]
                 li = nav_item 'Teams', [:admin, :teams]
                 li = nav_item 'Enrolments', [:admin, :enrolments]
                 li = nav_item 'Burners', [:admin, :users]

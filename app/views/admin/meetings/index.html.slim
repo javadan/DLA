@@ -1,0 +1,22 @@
+.row
+  .columns
+    = link_to [:new, :admin, :meeting], class: 'button small' do
+      | #{icon(:plus)}&nbsp;New Meeting
+
+.row
+  .columns
+    - if meetings.empty?
+      em No meetings!
+
+    - else
+      table width='100%'
+        tbody
+          - meetings.each do |meeting|
+            tr
+              td
+                h5
+                  = meeting.state
+              td
+                h3
+                  = link_to [:admin, meeting] do
+                    = l meeting.scheduled_for, format: :long

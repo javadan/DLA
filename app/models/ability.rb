@@ -9,5 +9,6 @@ class Ability
     
     can :manage, Team if user.admin?
     can :manage, Feedback if user.admin?
+    can :manage, Meeting if user.admin?
   end
 end

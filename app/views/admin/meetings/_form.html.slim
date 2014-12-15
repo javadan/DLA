@@ -1,0 +1,12 @@
+= simple_form_for([:admin, @meeting]) do |f|
+  = f.error_notification
+  
+  = f.input :scheduled_for, input_html: { class: 'medium-2' }
+  = f.input :state, as: :radio_buttons, collection: Meeting::STATES, include_blank: false
+
+  hr
+
+  ul.button-group
+    li = f.submit class: 'button'
+    li = link_to icon(:x), [:admin, :meetings], class: 'button secondary'
+
