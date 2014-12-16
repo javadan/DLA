@@ -28,7 +28,7 @@ hr
 hr
 
 .row
-  .columns
+  .columns.medium-6
 
     h4 Attended
     - @meeting_attendances.where(outcome: 'attended').each do |meeting_attendance|
@@ -38,6 +38,7 @@ hr
       = meeting_attendance.user.name
       br
 
+  .columns.medium-6
     h4 Apologised
     - @meeting_attendances.where(outcome: 'apologised').each do |meeting_attendance|
       = link_to [:admin, meeting, meeting_attendance], method: :delete, data: { confirm: 'Are you sure?' }, class: 'button tiny secondary' do
