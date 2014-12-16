@@ -11,7 +11,10 @@ DirtyLoveAffairs::Application.routes.draw do
   get 'dashboard', to: 'dashboards#show', as: :dashboard
   resources :users, only: :index
   namespace :admin do
-    resources :meetings
+    resources :meetings do
+      resources :meeting_attendances, only: %w{create destroy}
+    end
+
     resources :teams
     resources :shames
     resources :users

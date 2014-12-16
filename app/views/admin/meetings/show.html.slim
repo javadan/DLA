@@ -14,7 +14,28 @@
 
 hr
 
+= simple_form_for [:admin, meeting, MeetingAttendance.new] do |f|
+  .row
+    .columns.medium-4
+      = f.input :user_id, collection: User.where(approved: true), required: true
+
+    .columns.medium-4
+      = f.input :outcome, collection: MeetingAttendance::OUTCOMES, include_blank: false
+
+    .columns.medium-4
+      = f.submit class: 'button'
+
+hr
+
 .row
   .columns
-    h4 Attendees
 
+    h4 Attendees
+    - if meeting_attendances.empty?
+      em Nothing to see here.
+
+    - meeting_attendances.each do |meeting_attendance|
+      span.label
+        = meeting_attendance.outcome
+      = meeting_attendance.user.name
+      = link_to '[x]', [:admin, meeting, meeting_attendance], method: :delete, data: { confirm: 'Are you sure?' }  
