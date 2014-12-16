@@ -30,12 +30,18 @@ hr
 .row
   .columns
 
-    h4 Attendees
-    - if meeting_attendances.empty?
-      em Nothing to see here.
-
-    - meeting_attendances.each do |meeting_attendance|
-      span.label
-        = meeting_attendance.outcome
+    h4 Attended
+    - @meeting_attendances.where(outcome: 'attended').each do |meeting_attendance|
+      = link_to [:admin, meeting, meeting_attendance], method: :delete, data: { confirm: 'Are you sure?' }, class: 'button tiny secondary' do
+        = icon(:x)
+      | &nbsp;
       = meeting_attendance.user.name
-      = link_to '[x]', [:admin, meeting, meeting_attendance], method: :delete, data: { confirm: 'Are you sure?' }  
+      br
+
+    h4 Apologised
+    - @meeting_attendances.where(outcome: 'apologised').each do |meeting_attendance|
+      = link_to [:admin, meeting, meeting_attendance], method: :delete, data: { confirm: 'Are you sure?' }, class: 'button tiny secondary' do
+        = icon(:x)
+      | &nbsp;
+      = meeting_attendance.user.name
+      br

@@ -4,7 +4,6 @@ class Admin::MeetingAttendancesController < Admin::BaseController
 
   def create
     @meeting_attendance = meeting.meeting_attendances.create(meeting_attendance_params)
-    binding.pry
     redirect_to :back
   end
 
